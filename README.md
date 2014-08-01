@@ -9,9 +9,8 @@ pir-sensor-rpi
 Description
 ===========
 
-Linux kernel module for dealing with the Passive InfRared (PIR) sensor.
-This module is implemented as a character device driver and allows a process
-to be blocked on read().
+A simple application to set up a PIR sensor detection system on the Raspberry Pi.
+The application can take a picture and send an email is the PIR has been triggered.
 
 
 Folders
@@ -19,6 +18,6 @@ Folders
 
 - pir-app-rpi   : the user application to send a mail and take a picture when 
                   the PIR is triggered
-- pir-module-rpi: the linux kernel driver for the PIR
+- pir-module-rpi: the linux kernel driver for the PIR (GPIO 18 set by default)
 - cgi-bin       : the web-server python application
 - daemon        : the daemon to start/stop the application
