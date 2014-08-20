@@ -14,6 +14,18 @@ This module is implemented as a character device driver and allows a process
 to be blocked on read().
 
 
+Deployment
+==========
+
+If you want to use the default configuration (GPIO Pin 18), run the command:
+
+sudo insmod pir-sensor.ko
+
+else, you can set the GPIO Pin by using the 'gpio_trigger' parameter, as:
+
+sudo insmod pir-sensor.ko gpio_trigger=18
+
+
 Hardware dependencies
 =====================
 

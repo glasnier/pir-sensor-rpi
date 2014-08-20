@@ -41,7 +41,7 @@
 //------------------- Module parameters -------------------------------------
 
 static int gpio_trigger = DEFAULT_GPIO_TRIGGER;
-module_param(gpio_trigger, int, 0444);
+module_param(gpio_trigger, int, 0644);
 MODULE_PARM_DESC(gpio_trigger, "Channel Trigger GPIO.");
 
 static DECLARE_WAIT_QUEUE_HEAD(read_wait_queue);
@@ -190,7 +190,7 @@ static irqreturn_t gpio_trigger_handler(int irq, void * arg)
 
 	sensor->last_timestamp = timestamp;
 
-	printk(KERN_DEBUG "%s: GPIO pin %d (as input) has been triggered.\n", THIS_MODULE->name, DEFAULT_GPIO_TRIGGER);
+	printk(KERN_DEBUG "%s: GPIO pin %d (as input) has been triggered.\n", THIS_MODULE->name, gpio_trigger);
 
     return IRQ_HANDLED;
 }
@@ -246,7 +246,7 @@ static int __init pir_sensor_init (void)
 		return err;
 	}
 
-        printk(KERN_INFO "%s: init() - GPIO pin %d has been configured as input.\n", THIS_MODULE->name, DEFAULT_GPIO_TRIGGER);
+        printk(KERN_INFO "%s: init() - GPIO pin %d has been configured as input.\n", THIS_MODULE->name, gpio_trigger);
 
 	// Install user space char interface.
 	err = misc_register(& pir_sensor_driver);
